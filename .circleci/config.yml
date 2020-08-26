@@ -1,0 +1,27 @@
+version: 2.1
+
+jobs:
+  build:
+    working_directory: ~/sched
+
+    docker:
+    - image: collegevine/rails-build
+
+    parallelism: 1
+
+    steps:
+    - checkout: { path: "~/sched" }
+
+    - restore_cache:
+        keys:
+          - mice-schedule-v1-{{ .Branch }}-{{ checksum "<< parameters.directory >>/package-lock.json" }}-{{ checksum "<< parameters.directory >>/packages.dhall" }}-{{ checksum "<< parameters.directory >>/spago.dhall" }}
+          - mice-schedule-v1-{{ .Branch }}-
+
+    - run: cd ~/sched && npm install && sysconfcpus -n 2 npm run build
+
+    - save_cache:
+        key: mice-schedule-v1-{{ .Branch }}-{{ checksum "<< parameters.directory >>/package-lock.json" }}-{{ checksum "<< parameters.directory >>/packages.dhall" }}-{{ checksum "<< parameters.directory >>/spago.dhall" }}
+        paths:
+          - << parameters.directory >>/.spago
+          - << parameters.directory >>/node_modules
+          - << parameters.directory >>/output
