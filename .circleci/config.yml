@@ -29,8 +29,8 @@ jobs:
           - output
 
     - persist_to_workspace:
-      root: ~/sched/dist
-      paths: [.]
+        root: ~/sched/dist
+        paths: [.]
 
   deploy-sched:
     - attach_workspace: { at: ~/dist }
@@ -50,6 +50,6 @@ workflows:
     jobs:
       - build-sched
       - deploy-sched:
-        requires: ["build-sched"]
-        filters: {branches: {only: "master"}}
+          requires: ["build-sched"]
+          filters: {branches: {only: "master"}}
 
