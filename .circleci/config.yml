@@ -7,7 +7,7 @@ executors:
     - image: collegevine/rails-build
 
 jobs:
-  build:
+  build-sched:
     executor: executor
     parallelism: 1
     steps:
@@ -32,7 +32,7 @@ jobs:
       root: ~/sched/dist
       paths: [.]
 
-  deploy:
+  deploy-sched:
     - attach_workspace: { at: ~/dist }
 
     - run: |
@@ -48,8 +48,8 @@ workflows:
 
   build-and-deploy:
     jobs:
-      - build
-      - deploy:
-        requires: ["build"]
+      - build-sched
+      - deploy-sched:
+        requires: ["build-sched"]
         filters: {branches: {only: "master"}}
 
