@@ -1,14 +1,15 @@
 version: 2.1
 
-jobs:
-  build:
+executors:
+  executor:
     working_directory: ~/sched
-
     docker:
     - image: collegevine/rails-build
 
+jobs:
+  build:
+    executor: executor
     parallelism: 1
-
     steps:
     - checkout: { path: "~/sched" }
 
@@ -26,3 +27,29 @@ jobs:
           - .cache
           - node_modules
           - output
+
+    - persist_to_workspace:
+      root: ~/sched/dist
+      paths: [.]
+
+  deploy:
+    - attach_workspace: { at: ~/dist }
+
+    - run: |
+        cd ~/dist
+        git init && git add .
+        git config user.email "fsoikin@fsoikin.dev"
+        git config user.name "CI Deployment"
+        git commit -m "CI Deployment"
+        git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+
+workflows:
+  version: 2.1
+
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+        requires: ["build"]
+        filters: {branches: {only: "master"}}
+
