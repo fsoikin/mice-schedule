@@ -33,6 +33,7 @@ jobs:
         paths: [.]
 
   deploy-sched:
+    executor: executor
     steps:
       - attach_workspace: { at: ~/dist }
 
