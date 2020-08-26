@@ -39,6 +39,7 @@ jobs:
 
       - run: |
           cd ~/dist
+          echo "{ \"root\": \".\" }" > static.json
           git init && git add .
           git config user.email "fsoikin@fsoikin.dev"
           git config user.name "CI Deployment"
