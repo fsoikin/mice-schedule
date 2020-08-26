@@ -1,7 +1,7 @@
 {
   "scripts": {
     "postinstall": "spago install",
-    "bundle-ps": "spago bundle-module --to ./output/bundle.js",
+    "bundle-ps": "spago bundle-app --to ./output/bundle.js",
     "build": "npm run bundle-ps && parcel build index.html",
     "start": "npm run bundle-ps && concurrently \"spago bundle-app --to ./output/bundle.js --watch\" \"parcel index.html\""
   },
