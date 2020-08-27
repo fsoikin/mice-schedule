@@ -23,8 +23,14 @@ weekdays date kid = append $ concat
 
   -- Самостоятельно
   , for Matvey $ Typing `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
+
   , LTW `on` [Wednesday, Friday]
+  , for Anya $ LTW `on` [Tuesday, Thursday]
+  , for Anya $ Typing `on` [Thursday]
+
   , MasterClass `on` [Wednesday, Friday]
+  , for Anya $ MasterClass `on` [Monday]
+
   , KhanAcademy `on` [Wednesday, Friday]
   ]
   where

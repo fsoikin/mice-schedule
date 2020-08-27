@@ -26,7 +26,7 @@ type Rule = Date -> Kid -> MergeSchedule
 type Slot = { time :: Maybe TimeRange, subject :: Subject }
 type MergeSchedule = Array Slot -> Array Slot
 
-type TimedRow = { time :: TimeRange, subject :: Subject }
+type TimedRow = { time :: TimeRange, softTime :: Boolean, subject :: Subject }
 
 genSchedule :: Array (Date -> Kid -> MergeSchedule) -> Date -> Kid -> Array TimedRow
 genSchedule scheds date kid =
@@ -39,7 +39,7 @@ genSchedule scheds date kid =
     split xs = { ordered, timed, gaps }
       where
         ordered = xs # filter (_.time >>> isNothing) <#> _.subject
-        timed = xs # mapMaybe \x -> x.time <#> { subject: x.subject, time: _ }
+        timed = xs # mapMaybe \x -> x.time <#> { subject: x.subject, softTime: false, time: _ }
 
         taken =
           timed
@@ -79,10 +79,10 @@ genSchedule scheds date kid =
         fitIntoGap subj = do
           let slotLen = slotLengthMinutes subj
           g <- gaps # find \t -> t.duration >= slotLen + breakLengthMinutes
-          pure { time: time g.hour g.minute slotLen, subject: subj }
+          pure { time: time g.hour g.minute slotLen, softTime: true, subject: subj }
 
         attachAtEnd subj =
-          { time: time 23 0 (slotLengthMinutes subj), subject: subj }
+          { time: time 23 0 (slotLengthMinutes subj), softTime: true, subject: subj }
 
 whenDate :: (Date -> Boolean) -> (Kid -> MergeSchedule) -> Date -> Kid -> MergeSchedule
 whenDate p f d
