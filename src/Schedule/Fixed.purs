@@ -16,6 +16,9 @@ fixedSlots date kid = append $ concat
   [ for Matvey $ (Spanish # at 9 50 60) `on` [Monday, Wednesday]
   , for Matvey $ (Piano # at 11 15 45) `on` [Monday, Thursday]
 
+  , for Matvey $ onDate 2020 9 1 $ Piano # at 13 15 45
+  , for Matvey $ onDate 2020 9 2 $ Piano # at 13 15 45
+
   , for Matvey $ (Programming # at 13 50 50) `on` [Monday]
   , for Matvey $ (Programming # at 11 40 50) `on` [Tuesday]
 
