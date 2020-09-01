@@ -13,7 +13,6 @@ import Types (Kid(..), Subject(..))
 weekdays :: Rule
 weekdays date kid = append $ concat
   [ Maths `on` [Monday, Tuesday, Thursday, Friday]
-  , for Matvey $ Programming `on` [Monday, Tuesday]
 
   , Essay `on` [Monday, Wednesday]
 
