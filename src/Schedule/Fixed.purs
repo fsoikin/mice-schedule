@@ -27,7 +27,10 @@ fixedSlots date kid = append $ concat
   , (Biology # at 14 0 45) `on` [Tuesday, Thursday]
 
   -- Lessons with Avatar
-  , for Matvey $ onDate 2020 9 1 $ Outschool # at 14 30 60
+  , for Matvey $ onDate 2020 9  8 $ Outschool # at 14 30 60
+  , for Matvey $ onDate 2020 9 15 $ Outschool # at 14 30 60
+  , for Matvey $ onDate 2020 9 22 $ Outschool # at 14 30 60
+  , for Matvey $ onDate 2020 9 29 $ Outschool # at 14 30 60
 
   -- Creative writing
   , for Anya $ onDate 2020  9  8 $ Outschool # at 11 30 60
