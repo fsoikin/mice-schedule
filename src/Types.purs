@@ -33,6 +33,7 @@ data Subject
   | LTW
   | Latin
   | Piano
+  | VoiceTraining
   | Solfege
   | Harmony
   | History
@@ -71,6 +72,7 @@ subjectName = case _ of
   LTW -> "LTW"
   Latin -> "Latin"
   Piano -> "Piano"
+  VoiceTraining -> "Voice training"
   Solfege -> "Solfege"
   Harmony -> "Harmony"
   History -> "History"
@@ -90,6 +92,7 @@ subjectColor = case _ of
   LTW -> dark "rgb(227,74,51)"
   Latin -> light "rgb(140,150,198)"
   Piano -> dark "rgb(8,104,172)"
+  VoiceTraining -> light "rgb(123,204,196)"
   Solfege -> dark "rgb(67,162,202)"
   Harmony -> light "rgb(186,228,188)"
   History -> dark "rgb(150,150,150)"
