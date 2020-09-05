@@ -13,9 +13,9 @@ import Types (Kid, Subject(..))
 
 schedule :: Date -> Kid -> Array TimedRow
 schedule = genSchedule
-  [ weekdays
+  [ lunch
+  , weekdays
   , fixedSlots
-  , lunch
   , noWeekends
   ]
 
