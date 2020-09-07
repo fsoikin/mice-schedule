@@ -23,6 +23,10 @@ fixedSlots date kid = concatRules
   , for Matvey $ (Programming # at 13 50 50) `on` [Monday]
   , for Matvey $ (Programming # at 11 40 50) `on` [Tuesday]
 
+  , for Anya $ (Piano # at 12 30 50) `on` [Monday]
+  , for Anya $ onDate 2020 9 7 $ remove Piano
+  , for Anya $ (move Lunch $ at 13 30 40) `on` [Monday]
+
   , (History # at 11 0 45) `on` [Wednesday]
   , (Biology # at 14 0 45) `on` [Thursday]
 
@@ -57,6 +61,7 @@ fixedSlots date kid = concatRules
 
     for k f = if k == kid then f else identity
 
-    move subj f schd = f subj $ schd # filter (\s -> s.subject /= subj)
+    move subj f = f subj <<< remove subj
+    remove subj schd = schd # filter (\s -> s.subject /= subj)
 
     at yr mnth dy subj schd = timeSlot yr mnth dy subj `cons` schd

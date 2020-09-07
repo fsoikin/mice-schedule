@@ -13,7 +13,7 @@ module GenSchedule
 
 import Prelude
 
-import Data.Array (cons, drop, filter, find, foldr, head, last, mapMaybe, snoc, sortBy, uncons, zipWith)
+import Data.Array (cons, drop, filter, find, head, last, mapMaybe, snoc, sortBy, uncons, zipWith)
 import Data.Date (Date, Weekday, weekday)
 import Data.Foldable (foldl)
 import Data.Maybe (Maybe(..), fromMaybe, isNothing)
@@ -101,4 +101,4 @@ slot :: Subject -> Slot
 slot = { time: Nothing, subject: _ }
 
 concatRules :: Array MergeSchedule -> MergeSchedule
-concatRules rules schd = foldr ($) schd rules
+concatRules rules schd = foldl (flip ($)) schd rules
