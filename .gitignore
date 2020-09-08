@@ -4,6 +4,7 @@ node_modules/
 output/
 generated-docs/
 .cache/
+.ionide/
 dist/
 .psc-package/
 .psc*
