@@ -31,10 +31,10 @@ fixedSlots date kid = concatRules
   , (Biology # at 14 0 45) `on` [Thursday]
 
   -- Lessons with Avatar
-  , for Matvey $ onDate 2020 9  8 $ Outschool # at 14 30 60
-  , for Matvey $ onDate 2020 9 15 $ Outschool # at 14 30 60
-  , for Matvey $ onDate 2020 9 22 $ Outschool # at 14 30 60
-  , for Matvey $ onDate 2020 9 29 $ Outschool # at 14 30 60
+  , for Matvey $ onDate 2020 10  8 $ Outschool # at 15 10 40
+  , for Matvey $ onDate 2020 10 15 $ Outschool # at 15 10 40
+  , for Matvey $ onDate 2020 10 22 $ Outschool # at 15 10 40
+  , for Matvey $ onDate 2020 10 29 $ Outschool # at 15 10 40
 
   -- Creative writing
   , for Anya $ onDate 2020  9  8 $ Outschool # at 11 30 60
