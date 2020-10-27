@@ -51,12 +51,12 @@ fixedSlots date kid = concatRules
   , onDate 2020 11 5 $ move Biology $ at 15 40 45
 
   -- Creative writing
-  , for Anya $ onDate 2020 10 27 $ Outschool # at 12 30 60
-  , for Anya $ onDate 2020 11  3 $ Outschool # at 12 30 60
-  , for Anya $ onDate 2020 11 10 $ Outschool # at 12 30 60
-  , for Anya $ onDate 2020 11 17 $ Outschool # at 12 30 60
-  , for Anya $ onDate 2020 11 24 $ Outschool # at 12 30 60
-  , for Anya $ onDate 2020 12  1 $ Outschool # at 12 30 60
+  , for Anya $ onDate 2020 10 27 $ Outschool # at 11 30 60
+  , for Anya $ onDate 2020 11  3 $ Outschool # at 11 30 60
+  , for Anya $ onDate 2020 11 10 $ Outschool # at 11 30 60
+  , for Anya $ onDate 2020 11 17 $ Outschool # at 11 30 60
+  , for Anya $ onDate 2020 11 24 $ Outschool # at 11 30 60
+  , for Anya $ onDate 2020 12  1 $ Outschool # at 11 30 60
   ]
   where
     on f days
