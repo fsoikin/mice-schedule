@@ -23,17 +23,13 @@ fixedSlots date kid = concatRules
   , for Matvey $ (Programming # at 13 50 50) `on` [Monday]
   , for Matvey $ (Programming # at 11 40 50) `on` [Tuesday]
 
-  , for Anya $ (Piano # at 12 15 50) `on` [Thursday]
+  , for Anya $ (Piano # at 12 15 40) `on` [Thursday]
   , for Anya $ (Piano # at 14 15 50) `on` [Monday, Tuesday, Wednesday, Friday]
   , for Anya $ onDate 2020 9 7 $ remove Piano
   , for Anya $ (move Lunch $ at 13 30 40) `on` [Monday]
 
   , (History # at 11 0 80) `on` [Wednesday]
   , (Biology # at 14 0 45) `on` [Thursday]
-
-  -- Lessons with Avatar
-  , for Matvey $ onDate 2020 10 22 $ Outschool # at 15 10 40
-  , for Matvey $ onDate 2020 10 29 $ Outschool # at 15 10 40
 
   -- Architecture Business Camp in Minecraft: Develop Land & Make Profit (5-Session)
   , for Matvey $ onDate 2020 11 2 $ Outschool # at 14 0 90
@@ -51,7 +47,6 @@ fixedSlots date kid = concatRules
   , onDate 2020 11 5 $ move Biology $ at 15 40 45
 
   -- Creative writing
-  , for Anya $ onDate 2020 10 27 $ Outschool # at 11 30 60
   , for Anya $ onDate 2020 11  3 $ Outschool # at 11 30 60
   , for Anya $ onDate 2020 11 10 $ Outschool # at 11 30 60
   , for Anya $ onDate 2020 11 17 $ Outschool # at 11 30 60

@@ -4,14 +4,16 @@ module UI.Day
 
 import Prelude
 
+import Data.Array (drop, zipWith)
 import Data.Date (Date, weekday)
+import Data.Maybe (Maybe(..))
 import Data.String as String
 import Elmish (ReactElement)
 import Elmish.HTML.Styled as H
 import Elmish.React.DOM as R
 import GenSchedule (TimedRow)
 import Schedule (schedule)
-import Time (addMinutes)
+import Time (addMinutes, minuteDiff)
 import Types (allKids, kidName, subjectName)
 import UI.Utils (showDate, subjectStyle)
 
@@ -31,22 +33,35 @@ renderKid :: Array TimedRow -> ReactElement
 renderKid rows =
   H.div "card" $
     H.div "card-body px-4 py-2 py-md-3" $
-      rows <#> \r ->
-        H.div_ "row my-1 py-1 py-md-2 align-items-center" { style: subjectStyle r.subject }
-        [ H.div "small col-12 col-md-3"
-          [ showTime r.time
-          , if r.softTime then R.text " *" else R.empty
+      renderRow <$> rowPairs
+  where
+    rowPairs =
+      zipWith { current: _, next: _ } rows $ (Just <$> drop 1 rows) <> [Nothing]
+
+    renderRow { current, next } =
+      H.div_
+        "row my-1 py-1 py-md-2 align-items-center position-relative"
+        { style: subjectStyle current.subject }
+        [ overlap
+        , H.div "small col-12 col-md-3"
+          [ R.text $ hourMinute current.time <> " - " <> hourMinute slotEnd
+          , if current.softTime then R.text " *" else R.empty
           ]
         , H.div "col text-nowrap" $
-            H.strong "" $ subjectName r.subject
+            H.strong "" $ subjectName current.subject
         ]
-
-  where
-    showTime t =
-      R.text $ hourMinute t <> " - " <> hourMinute end
       where
-        end = addMinutes t.duration t
+        slotEnd = addMinutes current.time.duration current.time
         hourMinute x = (show x.hour) <> ":" <> (show x.minute # padZero)
+
+        overlap
+          | Just n <- next, minuteDiff n.time slotEnd < 0 =
+              H.div_
+                "bg-danger position-absolute h-100"
+                { style: H.css { width: "10px", left: "-12px" } }
+                ""
+          | otherwise =
+              R.empty
 
     padZero s
       | String.length s < 2 = "0" <> s
