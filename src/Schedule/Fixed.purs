@@ -31,27 +31,19 @@ fixedSlots date kid = concatRules
   , (History # at 11 0 80) `on` [Wednesday]
   , (Biology # at 14 0 45) `on` [Thursday]
 
-  -- Architecture Business Camp in Minecraft: Develop Land & Make Profit (5-Session)
-  , for Matvey $ onDate 2020 11 2 $ Outschool # at 14 0 90
-  , for Matvey $ onDate 2020 11 2 $ move Programming $ at 15 40 20
-  , for Matvey $ onDate 2020 11 3 $ Outschool # at 14 0 90
-  , for Matvey $ onDate 2020 11 3 $ move Lunch $ at 12 40 20
-  , for Matvey $ onDate 2020 11 3 $ move Programming $ at 15 40 20
-  , for Matvey $ onDate 2020 11 4 $ Outschool # at 14 0 90
-  , for Matvey $ onDate 2020 11 4 $ move Lunch $ at 12 40 20
-  , for Matvey $ onDate 2020 11 4 $ remove LTW
-  , for Matvey $ onDate 2020 11 5 $ Outschool # at 14 0 90
-  , for Matvey $ onDate 2020 11 6 $ Outschool # at 14 0 90
-  , for Matvey $ onDate 2020 11 6 $ move Lunch $ at 12 30 20
-
-  , onDate 2020 11 5 $ move Biology $ at 15 40 45
-
   -- Creative writing
-  , for Anya $ onDate 2020 11  3 $ Outschool # at 11 30 60
-  , for Anya $ onDate 2020 11 10 $ Outschool # at 11 30 60
-  , for Anya $ onDate 2020 11 17 $ Outschool # at 11 30 60
-  , for Anya $ onDate 2020 11 24 $ Outschool # at 11 30 60
-  , for Anya $ onDate 2020 12  1 $ Outschool # at 11 30 60
+  , for Anya $ onDate 2021 1 13 $ Outschool # at 16 15 60
+  , for Anya $ onDate 2021 1 20 $ Outschool # at 16 15 60
+  , for Anya $ onDate 2021 1 27 $ Outschool # at 16 15 60
+  , for Anya $ onDate 2021 2  3 $ Outschool # at 16 15 60
+  , for Anya $ onDate 2021 2 10 $ Outschool # at 16 15 60
+  , for Anya $ onDate 2021 2 17 $ Outschool # at 16 15 60
+  , for Anya $ onDate 2021 2 24 $ Outschool # at 16 15 60
+  , for Anya $ onDate 2021 3  3 $ Outschool # at 16 15 60
+  , for Anya $ onDate 2021 3 10 $ Outschool # at 16 15 60
+  , for Anya $ onDate 2021 3 17 $ Outschool # at 16 15 60
+  , for Anya $ onDate 2021 3 24 $ Outschool # at 16 15 60
+  , for Anya $ onDate 2021 3 31 $ Outschool # at 16 15 60
   ]
   where
     on f days
