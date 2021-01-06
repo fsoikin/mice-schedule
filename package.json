@@ -8,9 +8,9 @@
   "devDependencies": {
     "concurrently": "^5.3.0",
     "parcel": "^1.12.4",
-    "purescript": "^0.13.6",
+    "purescript": "^0.13.8",
     "purescript-psa": "0.7.3",
-    "spago": "^0.16.0"
+    "spago": "^0.18.1"
   },
   "dependencies": {
     "react": "^16.13.1",
