@@ -32,12 +32,11 @@ fixedSlots date kid = concatRules
   , (History # at 11 0 80) `on` [Wednesday]
   , (Biology # at 14 0 45) `on` [Thursday]
 
+  , onDate 2021 2 17 $ remove History
+  , onDate 2021 2 18 $ remove Biology
+  , onDate 2021 2 18 $ (History # at 10 0 60)
+
   -- Creative writing
-  , for Anya $ onDate 2021 1 13 $ Outschool # at 16 15 60
-  , for Anya $ onDate 2021 1 20 $ Outschool # at 16 15 60
-  , for Anya $ onDate 2021 1 27 $ Outschool # at 16 15 60
-  , for Anya $ onDate 2021 2  3 $ Outschool # at 16 15 60
-  , for Anya $ onDate 2021 2 10 $ Outschool # at 16 15 60
   , for Anya $ onDate 2021 2 17 $ Outschool # at 16 15 60
   , for Anya $ onDate 2021 2 24 $ Outschool # at 16 15 60
   , for Anya $ onDate 2021 3  3 $ Outschool # at 16 15 60
