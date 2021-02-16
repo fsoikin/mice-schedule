@@ -26,14 +26,11 @@ fixedSlots date kid = concatRules
 
   , for Anya $ (Piano # at 12 15 40) `on` [Thursday]
   , for Anya $ (Piano # at 14 15 50) `on` [Monday, Tuesday, Wednesday, Friday]
-  , for Anya $ onDate 2020 9 7 $ remove Piano
   , for Anya $ (move Lunch $ at 13 30 40) `on` [Monday]
 
   , (History # at 11 0 80) `on` [Wednesday]
-  , (Biology # at 14 0 45) `on` [Thursday]
 
   , onDate 2021 2 17 $ remove History
-  , onDate 2021 2 18 $ remove Biology
   , onDate 2021 2 18 $ (History # at 10 0 60)
 
   -- Creative writing
