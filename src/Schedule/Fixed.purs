@@ -17,21 +17,14 @@ fixedSlots date kid = concatRules
   , for Matvey $ (Spanish # at 14 30 60) `on` [Wednesday]
   , for Matvey $ (Piano # at 11 15 45) `on` [Monday, Thursday]
 
-  , for Matvey $ (Piano # at 13 15 45) `on` [Tuesday, Wednesday]
-  , for Matvey $ (Piano # at 13  0 45) `on` [Friday]
-  , for Matvey $ (move Lunch $ at 14 0 40) `on` [Tuesday, Wednesday, Friday]
-
   , for Matvey $ (Programming # at 13 50 50) `on` [Monday]
   , for Matvey $ (Programming # at 11 40 50) `on` [Tuesday]
 
   , for Anya $ (Piano # at 12 15 40) `on` [Thursday]
-  , for Anya $ (Piano # at 14 15 50) `on` [Monday, Tuesday, Wednesday, Friday]
-  , for Anya $ (move Lunch $ at 13 30 40) `on` [Monday]
 
-  , (History # at 11 0 80) `on` [Wednesday]
-
-  , onDate 2021 2 17 $ remove History
-  , onDate 2021 2 18 $ (History # at 10 0 60)
+  , (History # at 10 0 60) `on` [Thursday]
+  , for Anya $ (History # at 11 0 30) `on` [Thursday]
+  , for Matvey $ (History # at 12 30 30) `on` [Thursday]
 
   -- Creative writing
   , for Anya $ onDate 2021 2 17 $ Outschool # at 16 15 60
@@ -53,7 +46,7 @@ fixedSlots date kid = concatRules
 
     for k f = if k == kid then f else identity
 
-    move subj f = f subj <<< remove subj
-    remove subj schd = schd # filter (\s -> s.subject /= subj)
+    -- move subj f = f subj <<< remove subj
+    -- remove subj schd = schd # filter (\s -> s.subject /= subj)
 
     at yr mnth dy subj schd = timeSlot yr mnth dy subj `cons` schd
