@@ -15,7 +15,7 @@ weekdays date kid = append $ concat
   [ Maths `on` [Monday, Tuesday, Thursday, Friday]
   , LTW `on` [Wednesday, Friday]
 
-  , for Matvey $ Piano `on` [Tuesday, Wednesday, Thursday]
+  , for Matvey $ Piano `on` [Tuesday, Wednesday, Friday]
   , for Matvey $ Essay `on` [Monday, Wednesday, Thursday]
   , for Matvey $ Typing `on` [Tuesday, Wednesday]
   , for Matvey $ VoiceTraining `on` [Tuesday, Thursday, Friday]
