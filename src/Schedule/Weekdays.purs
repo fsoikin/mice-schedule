@@ -12,16 +12,18 @@ import Types (Kid(..), Subject(..))
 
 weekdays :: Rule
 weekdays date kid = append $ concat
-  [ Maths `on` [Monday, Tuesday, Thursday, Friday]
-  , LTW `on` [Wednesday, Friday]
+  [ for Anya $ Maths `on` [Monday, Tuesday, Thursday, Friday]
+  -- , LTW `on` [Wednesday, Friday]
 
   , for Matvey $ Piano `on` [Tuesday, Wednesday, Friday]
-  , for Matvey $ Essay `on` [Monday, Wednesday, Thursday]
-  , for Matvey $ Typing `on` [Tuesday, Wednesday]
+  , for Matvey $ Essay `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
   , for Matvey $ VoiceTraining `on` [Tuesday, Thursday, Friday]
-  , for Matvey $ MasterClass `on` [Monday]
-  , for Matvey $ KhanAcademy `on` [Friday]
+  , for Matvey $ Essay `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
   , for Matvey $ Spanish `on` [Tuesday, Friday]
+  , for Matvey $ Essay `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
+  -- , for Matvey $ Typing `on` [Tuesday, Wednesday]
+  -- , for Matvey $ MasterClass `on` [Monday]
+  -- , for Matvey $ KhanAcademy `on` [Friday]
 
   , for Anya $ Piano `on` [Monday, Tuesday, Wednesday, Friday]
   , for Anya $ Essay `on` [Monday, Tuesday, Wednesday, Thursday]
