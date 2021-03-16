@@ -15,8 +15,8 @@ import Prelude
 
 import Data.Array (mapMaybe, (..))
 import Data.Generic.Rep (class Generic)
-import Data.Generic.Rep.Bounded (genericBottom, genericTop)
-import Data.Generic.Rep.Enum (genericFromEnum, genericToEnum)
+import Data.Bounded.Generic (genericBottom, genericTop)
+import Data.Enum.Generic (genericFromEnum, genericToEnum)
 
 data Kid = Matvey | Anya
 derive instance eqKid :: Eq Kid

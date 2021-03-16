@@ -13,7 +13,7 @@ import Data.Maybe (Maybe(..), fromMaybe)
 import Data.Time.Duration (Days(..))
 import Effect.Class (class MonadEffect, liftEffect)
 import Effect.Now (nowDate)
-import Elmish (ComponentDef, DispatchMsgFn, ReactElement, Transition, bimap, fork, handle, lmap, (>#<))
+import Elmish (ComponentDef, Dispatch, ReactElement, Transition, bimap, fork, lmap)
 import Elmish.HTML.Styled as H
 import Elmish.React.DOM as R
 import GenSchedule (isDay)
@@ -39,13 +39,13 @@ init = do
   fork $ liftEffect $ Today <$> nowDate
   pure Nothing
 
-view :: State -> DispatchMsgFn Message -> ReactElement
+view :: State -> Dispatch Message -> ReactElement
 view Nothing _ = R.empty
 view (Just state) dispatch =
   H.div "container pt-5" $
   [ R.fragment $ state.days <#> Day.view
-  , Stats.view state.stats (dispatch >#< StatsMsg)
-  , H.button_ "btn btn-primary px-4 mb-5" { onClick: handle dispatch LoadAnotherWeek } "Ещё неделю!"
+  , Stats.view state.stats (dispatch <<< StatsMsg)
+  , H.button_ "btn btn-primary px-4 mb-5" { onClick: dispatch LoadAnotherWeek } "Ещё неделю!"
   ]
 
 update :: forall m. MonadEffect m => State -> Message -> Transition m Message State

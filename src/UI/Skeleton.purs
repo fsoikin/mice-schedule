@@ -6,7 +6,7 @@ module UI.Skeleton
 
 import Prelude
 
-import Elmish (ComponentDef, DispatchMsgFn, ReactElement, Transition)
+import Elmish (ComponentDef, Dispatch, ReactElement, Transition)
 import Elmish.React.DOM as R
 
 data Message
@@ -19,7 +19,7 @@ def = { init, view, update }
 init :: forall m. Transition m Message State
 init = pure unit
 
-view :: State -> DispatchMsgFn Message -> ReactElement
+view :: State -> Dispatch Message -> ReactElement
 view s dispatch = R.text "hello"
 
 update :: forall m. State -> Message -> Transition m Message State
