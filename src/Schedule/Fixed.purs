@@ -4,7 +4,7 @@ module Schedule.Fixed
 
 import Prelude
 
-import Data.Array (cons, filter)
+import Data.Array (cons)
 import Data.Date (Weekday(..), day, month, weekday, year)
 import Data.Enum (fromEnum)
 import Data.Foldable (elem)
@@ -13,8 +13,7 @@ import Types (Kid(..), Subject(..))
 
 fixedSlots :: Rule
 fixedSlots date kid = concatRules
-  [ for Matvey $ (Spanish # at 15 30 60) `on` [Monday]
-  , for Matvey $ (Spanish # at 14 30 60) `on` [Wednesday]
+  [ for Matvey $ (Spanish # at 16 30 60) `on` [Monday, Wednesday]
   , for Matvey $ (Piano # at 11 15 45) `on` [Monday, Thursday]
 
   -- , for Matvey $ (Programming # at 13 50 50) `on` [Monday]
