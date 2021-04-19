@@ -30,8 +30,8 @@ weekdays date kid = append $ concat
   , for Anya $ LTW `on` [Tuesday, Thursday]
   , for Anya $ MasterClass `on` [Monday, Wednesday, Friday]
   , for Anya $ Typing `on` [Tuesday, Thursday]
-  , for Anya $ KhanAcademy `on` [Monday, Friday]
-  , for Anya $ Outschool `on` [Monday, Friday]
+  , for Anya $ KhanAcademy `on` [Wednesday, Friday]
+  , for Anya $ Outschool `on` [Wednesday, Friday]
   ]
   where
     on subj days
