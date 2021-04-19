@@ -26,13 +26,18 @@ fixedSlots date kid = concatRules
   , for Matvey $ (History # at 12 30 30) `on` [Thursday]
 
   -- Creative writing
-  , for Anya $ onDate 2021 2 17 $ Outschool # at 16 15 60
-  , for Anya $ onDate 2021 2 24 $ Outschool # at 16 15 60
-  , for Anya $ onDate 2021 3  3 $ Outschool # at 16 15 60
-  , for Anya $ onDate 2021 3 10 $ Outschool # at 16 15 60
-  , for Anya $ onDate 2021 3 17 $ Outschool # at 16 15 60
-  , for Anya $ onDate 2021 3 24 $ Outschool # at 16 15 60
-  , for Anya $ onDate 2021 3 31 $ Outschool # at 16 15 60
+  , for Anya $ onDate 2021 4 19 $ Outschool # at 10 0 60
+  , for Anya $ onDate 2021 4 26 $ Outschool # at 10 0 60
+  , for Anya $ onDate 2021 5  3 $ Outschool # at 10 0 60
+  , for Anya $ onDate 2021 5 10 $ Outschool # at 10 0 60
+  , for Anya $ onDate 2021 5 17 $ Outschool # at 10 0 60
+  , for Anya $ onDate 2021 5 24 $ Outschool # at 10 0 60
+  , for Anya $ onDate 2021 6  7 $ Outschool # at 10 0 60
+  , for Anya $ onDate 2021 6 14 $ Outschool # at 10 0 60
+  , for Anya $ onDate 2021 6 21 $ Outschool # at 10 0 60
+  , for Anya $ onDate 2021 6 28 $ Outschool # at 10 0 60
+  , for Anya $ onDate 2021 7 12 $ Outschool # at 10 0 60
+  , for Anya $ onDate 2021 7 19 $ Outschool # at 10 0 60
   ]
   where
     on f days
