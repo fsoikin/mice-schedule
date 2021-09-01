@@ -26,22 +26,19 @@ data Teacher = Alisa | Fyodor | Ismini | Luba
 
 data Subject
   = Lunch
-  | Maths
-  | Programming
-  | Typing
-  | Spanish
-  | LTW
-  | Latin
-  | Piano
-  | VoiceTraining
-  | Solfege
-  | Harmony
-  | History
-  | Outschool
-  | MasterClass
-  | KhanAcademy
-  | Essay
   | Biology
+  | Chinese
+  | Essay
+  | History
+  | Maths
+  | Outschool
+  | Physics
+  | Piano
+  | Programming
+  | Spanish
+  | Typing
+  | VoiceTraining
+  | Writing
 derive instance eqSubject :: Eq Subject
 derive instance ordSubject :: Ord Subject
 derive instance gSubject :: Generic Subject _
@@ -65,22 +62,19 @@ kidIcon = case _ of
 subjectName :: Subject -> String
 subjectName = case _ of
   Lunch -> "Lunch"
-  Maths -> "Maths"
-  Programming -> "Programming"
-  Typing -> "Typing"
-  Spanish -> "Spanish"
-  LTW -> "LTW"
-  Latin -> "Latin"
-  Piano -> "Piano"
-  VoiceTraining -> "Voice training"
-  Solfege -> "Solfege"
-  Harmony -> "Harmony"
-  History -> "History"
-  Outschool -> "Outschool"
-  MasterClass -> "MasterClass"
-  KhanAcademy -> "KhanAcademy"
-  Essay -> "Essay"
   Biology -> "Biology"
+  Chinese -> "Chinese"
+  Essay -> "Essay"
+  History -> "History"
+  Maths -> "Maths"
+  Outschool -> "Outschool"
+  Physics -> "Physics"
+  Piano -> "Piano"
+  Programming -> "Programming"
+  Spanish -> "Spanish"
+  Typing -> "Typing"
+  VoiceTraining -> "Voice training"
+  Writing -> "Writing"
 
 subjectColor :: Subject -> { back :: String, fore :: String }
 subjectColor = case _ of
@@ -89,18 +83,15 @@ subjectColor = case _ of
   Programming -> light "rgb(44,162,95)"
   Typing -> light "rgb(178,226,226)"
   Spanish -> dark "rgb(136,86,167)"
-  LTW -> dark "rgb(227,74,51)"
-  Latin -> light "rgb(140,150,198)"
+  Chinese -> dark "rgb(223,101,176)"
+  Physics -> dark "rgb(186,228,188)"
   Piano -> dark "rgb(8,104,172)"
   VoiceTraining -> light "rgb(123,204,196)"
-  Solfege -> dark "rgb(67,162,202)"
-  Harmony -> light "rgb(186,228,188)"
   History -> dark "rgb(150,150,150)"
   Outschool -> dark "rgb(221,28,119)"
-  MasterClass -> light "rgb(223,101,176)"
-  KhanAcademy -> light "rgb(215,181,216)"
   Essay -> light "rgb(253,204,138)"
   Biology -> light "rgb(204,204,204)"
+  Writing -> light "rgb(215,181,216)"
   where
     light = { back: _, fore: "black" }
     dark = { back: _, fore: "white" }

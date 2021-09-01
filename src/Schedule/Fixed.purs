@@ -4,7 +4,7 @@ module Schedule.Fixed
 
 import Prelude
 
-import Data.Array (cons)
+import Data.Array (cons, filter)
 import Data.Date (Weekday(..), day, month, weekday, year)
 import Data.Enum (fromEnum)
 import Data.Foldable (elem)
@@ -14,30 +14,31 @@ import Types (Kid(..), Subject(..))
 fixedSlots :: Rule
 fixedSlots date kid = concatRules
   [ for Matvey $ (Spanish # at 16 30 60) `on` [Monday, Wednesday]
-  , for Matvey $ (Piano # at 11 15 45) `on` [Monday, Thursday]
 
-  -- , for Matvey $ (Programming # at 13 50 50) `on` [Monday]
-  -- , for Matvey $ (Programming # at 11 40 50) `on` [Tuesday]
+  , for Matvey $ (Piano # at 11 0 45) `on` [Monday, Thursday]
+  , for Anya $ (Piano # at 12 0 40) `on` [Thursday]
 
-  , for Anya $ (Piano # at 12 15 40) `on` [Thursday]
+  , for Matvey $ (Programming # at 12 0 50) `on` [Monday]
+  , for Matvey $ (Programming # at 14 0 50) `on` [Thursday]
+  , for Anya $ (Programming # at 14 0 50) `on` [Monday]
 
-  , (History # at 10 0 60) `on` [Thursday]
-  , for Anya $ (History # at 11 0 30) `on` [Thursday]
-  , for Matvey $ (History # at 12 30 30) `on` [Thursday]
+  , (Physics # at 12 0 45) `on` [Tuesday]
+  , (History # at 10 0 120) `on` [Wednesday]
+  , (Biology # at 10 0 120) `on` [Friday]
 
-  -- Creative writing
-  , for Anya $ onDate 2021 4 19 $ Outschool # at 10 0 60
-  , for Anya $ onDate 2021 4 26 $ Outschool # at 10 0 60
-  , for Anya $ onDate 2021 5  3 $ Outschool # at 10 0 60
-  , for Anya $ onDate 2021 5 10 $ Outschool # at 10 0 60
-  , for Anya $ onDate 2021 5 17 $ Outschool # at 10 0 60
-  , for Anya $ onDate 2021 5 24 $ Outschool # at 10 0 60
-  , for Anya $ onDate 2021 6  7 $ Outschool # at 10 0 60
-  , for Anya $ onDate 2021 6 14 $ Outschool # at 10 0 60
-  , for Anya $ onDate 2021 6 21 $ Outschool # at 10 0 60
-  , for Anya $ onDate 2021 6 28 $ Outschool # at 10 0 60
-  , for Anya $ onDate 2021 7 12 $ Outschool # at 10 0 60
-  , for Anya $ onDate 2021 7 19 $ Outschool # at 10 0 60
+  , onDate 2021 9 1 $ remove Essay
+  , onDate 2021 9 1 $ remove Spanish
+  , onDate 2021 9 1 $ remove Maths
+
+  , onDate 2021 9 2 $ remove Programming
+  , onDate 2021 9 2 $ remove Typing
+  , onDate 2021 9 2 $ remove VoiceTraining
+  , onDate 2021 9 2 $ remove Maths
+
+  , onDate 2021 9 3 $ remove Chinese
+  , onDate 2021 9 3 $ remove Piano
+  , onDate 2021 9 3 $ remove VoiceTraining
+  , onDate 2021 9 3 $ remove Maths
   ]
   where
     on f days
@@ -51,6 +52,6 @@ fixedSlots date kid = concatRules
     for k f = if k == kid then f else identity
 
     -- move subj f = f subj <<< remove subj
-    -- remove subj schd = schd # filter (\s -> s.subject /= subj)
+    remove subj = filter (\s -> s.subject /= subj)
 
     at yr mnth dy subj schd = timeSlot yr mnth dy subj `cons` schd
