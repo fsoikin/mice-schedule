@@ -24,6 +24,7 @@ weekdays date kid = append $ concat
   , for Anya $ Essay `on` [Monday, Wednesday]
   , for Anya $ Typing `on` [Tuesday, Thursday]
   , for Anya $ VoiceTraining `on` [Tuesday, Thursday, Friday]
+  , for Anya $ Writing `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
 
   , History `on` [Tuesday, Thursday]
   ]
