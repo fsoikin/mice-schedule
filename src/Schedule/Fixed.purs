@@ -20,7 +20,7 @@ fixedSlots date kid = concatRules
   , for Matvey $ (Piano # at 11 0 45) `on` [Thursday]
   , for Anya $ (Piano # at 12 0 40) `on` [Thursday]
 
-  , for Matvey $ (Programming # at 12 0 50) `on` [Monday]
+  , for Matvey $ (Programming # at 12 30 50) `on` [Monday]
   , for Matvey $ (Programming # at 13 30 50) `on` [Thursday]
   , for Anya $ (Programming # at 14 0 50) `on` [Monday]
 
