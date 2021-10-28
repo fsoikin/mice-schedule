@@ -34,6 +34,9 @@ fixedSlots date kid = concatRules
   , onDate 2021 11 3 $ for Matvey $ Piano # at 13 0 45
   , onDate 2021 11 3 $ for Matvey $ move Lunch $ at 14 0 45
   , onDate 2021 11 3 $ for Anya $ Piano # at 14 0 45
+
+  , onDate 2021 10 29 $ move History $ at 11 0 80
+  , onDate 2021 10 29 $ for Matvey $ move Maths $ at 10 0 45
   ]
   where
     on f days
