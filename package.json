@@ -1,14 +1,13 @@
 {
   "scripts": {
     "postinstall": "spago install",
-    "bundle-ps": "spago bundle-app --to ./output/bundle.js",
-    "build": "npm run bundle-ps && parcel build index.html",
-    "start": "npm run bundle-ps && concurrently \"spago bundle-app --to ./output/bundle.js --watch\" \"parcel index.html\""
+    "build": "spago build && esbuild ./output/Main/index.js --bundle --outfile=./output/bundle.js --global-name=Main",
+    "start": "spago build && esbuild ./output/Main/index.js --bundle --outfile=./output/bundle.js --global-name=Main --serve --servedir=."
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
-    "parcel": "^1.12.4",
-    "purescript": "^0.14.4",
+    "esbuild": "^0.13.9",
+    "purescript": "^0.14.5",
     "purescript-psa": "0.8.2",
     "spago": "^0.20.3"
   },
