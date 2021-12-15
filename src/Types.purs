@@ -98,5 +98,10 @@ subjectColor = case _ of
 
 slotLengthMinutes :: Subject -> Int
 slotLengthMinutes = case _ of
-  Typing -> 30
+  Typing -> 20
+  Chinese -> 20
+  Spanish -> 20
+  Piano -> 30
+  VoiceTraining -> 20
+  Essay -> 30
   _ -> 40

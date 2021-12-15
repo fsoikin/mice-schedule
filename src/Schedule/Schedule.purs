@@ -20,7 +20,7 @@ schedule = genSchedule
   ]
 
 lunch :: Rule
-lunch _ _ = cons (Lunch # timeSlot 13 0 40)
+lunch _ _ = cons (Lunch # timeSlot 13 0 30)
 
 noWeekends :: Rule
 noWeekends = whenDate (isDay Saturday || isDay Sunday) \_ _ -> []
