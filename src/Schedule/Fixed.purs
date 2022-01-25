@@ -13,8 +13,7 @@ import Types (Kid(..), Subject(..))
 
 fixedSlots :: Rule
 fixedSlots date kid = concatRules
-  [ for Matvey $ (Spanish # at 15 15 60) `on` [Friday]
-  , for Matvey $ (Spanish # at 10 0 60) `on` [Wednesday]
+  [ for Matvey $ (Spanish # at 9 0 60) `on` [Wednesday, Friday]
 
   , for Matvey $ (Piano # at 11 30 45) `on` [Monday]
   , for Matvey $ (Piano # at 11 0 45) `on` [Thursday]
