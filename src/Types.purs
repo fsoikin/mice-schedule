@@ -39,6 +39,7 @@ data Subject
   | Typing
   | VoiceTraining
   | Writing
+  | AssignedReading
 derive instance eqSubject :: Eq Subject
 derive instance ordSubject :: Ord Subject
 derive instance gSubject :: Generic Subject _
@@ -75,6 +76,7 @@ subjectName = case _ of
   Typing -> "Typing"
   VoiceTraining -> "Voice training"
   Writing -> "Writing"
+  AssignedReading -> "Assigned Reading"
 
 subjectColor :: Subject -> { back :: String, fore :: String }
 subjectColor = case _ of
@@ -92,6 +94,7 @@ subjectColor = case _ of
   Essay -> light "rgb(253,204,138)"
   Biology -> light "rgb(204,204,204)"
   Writing -> light "rgb(215,181,216)"
+  AssignedReading -> light "rgb(195,201,255)"
   where
     light = { back: _, fore: "black" }
     dark = { back: _, fore: "white" }

@@ -27,23 +27,17 @@ fixedSlots date kid = concatRules
   , for Anya $ (Programming # at 14 0 50) `on` [Monday]
 
   , (Physics # at 12 0 45) `on` [Tuesday]
-  , (Biology # at 11 0 120) `on` [Wednesday]
-  , (Biology # at 10 0 120) `on` [Friday]
-
-  , onDate 2021 11 4 $ remove Piano
-  , onDate 2021 11 3 $ remove Piano
-  , onDate 2021 11 3 $ for Matvey $ Piano # at 13 0 45
-  , onDate 2021 11 3 $ for Matvey $ move Lunch $ at 14 0 45
-  , onDate 2021 11 3 $ for Anya $ Piano # at 14 0 45
-
-  , onDate 2021 10 29 $ move History $ at 11 0 80
-  , onDate 2021 10 29 $ for Matvey $ move Maths $ at 10 0 45
+  , (Biology # at 11 0 50) `on` [Wednesday]
+  , (History # at 12 0 50) `on` [Wednesday]
+  , (Biology # at 10 0 50) `on` [Friday]
+  , (History # at 11 0 50) `on` [Friday]
   ]
   where
     on f days
       | weekday date `elem` days = f
       | otherwise = identity
 
+    onDate :: forall a. Int -> Int -> Int -> (a -> a) -> a -> a
     onDate yr mnth dy f
       | (fromEnum $ year date) == yr && (fromEnum $ month date) == mnth && (fromEnum $ day date) == dy = f
       | otherwise = identity
