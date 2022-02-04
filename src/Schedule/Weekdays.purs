@@ -14,9 +14,9 @@ weekdays :: Rule
 weekdays date kid = append $ concat
   [ for Matvey $ Piano `on` [Tuesday, Wednesday, Friday]
   , for Matvey $ Maths `on` [Monday, Tuesday, Thursday, Friday]
-  , for Matvey $ Chinese `on` [Thursday, Friday]
+  , for Matvey $ Chinese `on` [Tuesday, Thursday]
   , for Matvey $ VoiceTraining `on` [Tuesday, Thursday, Friday]
-  , for Matvey $ Essay `on` [Monday, Tuesday, Wednesday]
+  , for Matvey $ Essay `on` [Monday, Wednesday, Friday]
   , for Matvey $ Spanish `on` [Tuesday, Thursday]
 
   , for Anya $ Piano `on` [Monday, Tuesday, Wednesday, Friday]
