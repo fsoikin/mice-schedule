@@ -27,8 +27,8 @@ fixedSlots date kid = concatRules
   , for Anya $ (Programming # at 14 0 50) `on` [Monday]
 
   , (Physics # at 12 0 45) `on` [Tuesday]
-  , (Biology # at 11 0 50) `on` [Wednesday, Friday]
-  , (History # at 12 0 50) `on` [Wednesday, Friday]
+  , (Biology # at 11 0 120) `on` [Wednesday]
+  , (History # at 11 0 120) `on` [Friday]
   ]
   where
     on f days
