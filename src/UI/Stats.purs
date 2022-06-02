@@ -8,13 +8,12 @@ module UI.Stats
 
 import Prelude
 
-import Control.MonadZero (guard)
+import Control.Alternative (guard)
 import Data.Array (foldl)
 import Data.Date (Date, Weekday(..), adjust, weekday)
 import Data.Enum (pred, succ)
 import Data.Map as M
 import Data.Maybe (Maybe(..), fromMaybe)
-
 import Data.Time.Duration (Days(..))
 import Data.Tuple (Tuple(..))
 import Data.Unfoldable (unfoldr)
@@ -35,7 +34,7 @@ type State =
   , modal :: Boolean
   }
 
-init :: forall m. { today :: Date } -> Transition m Message State
+init :: { today :: Date } -> Transition Message State
 init { today } = pure
   { from: seekWeekday Monday pred today
   , to: seekWeekday Sunday succ today
@@ -105,7 +104,7 @@ view state dispatch = R.fragment
             >>= (\d -> schedule d kid)
             # foldl (\m r -> m # M.insertWith (+) r.subject 1) M.empty
 
-update :: forall m. State -> Message -> Transition m Message State
+update :: State -> Message -> Transition Message State
 update state = case _ of
   Toggle ->
     pure state { modal = not state.modal }

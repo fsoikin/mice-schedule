@@ -8,9 +8,9 @@
     "concurrently": "^5.3.0",
     "copyfiles": "^2.4.1",
     "esbuild": "^0.13.9",
-    "purescript": "^0.14.5",
+    "purescript": "^0.15.2",
     "purescript-psa": "0.8.2",
-    "spago": "^0.20.3"
+    "spago": "^0.20.9"
   },
   "dependencies": {
     "react": "^16.13.1",

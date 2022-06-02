@@ -11,7 +11,7 @@ import Data.Date (Date, Weekday(..), adjust)
 import Data.Int (toNumber)
 import Data.Maybe (Maybe(..), fromMaybe)
 import Data.Time.Duration (Days(..))
-import Effect.Class (class MonadEffect, liftEffect)
+import Effect.Class (liftEffect)
 import Effect.Now (nowDate)
 import Elmish (ComponentDef, Dispatch, ReactElement, Transition, bimap, fork, lmap)
 import Elmish.HTML.Styled as H
@@ -31,10 +31,10 @@ type State = Maybe
   , stats :: Stats.State
   }
 
-def :: forall m. MonadEffect m => ComponentDef m Message State
+def :: ComponentDef Message State
 def = { init, view, update }
 
-init :: forall m. MonadEffect m => Transition m Message State
+init :: Transition Message State
 init = do
   fork $ liftEffect $ Today <$> nowDate
   pure Nothing
@@ -48,7 +48,7 @@ view (Just state) dispatch =
   , H.button_ "btn btn-primary px-4 mb-5" { onClick: dispatch LoadAnotherWeek } "Ещё неделю!"
   ]
 
-update :: forall m. MonadEffect m => State -> Message -> Transition m Message State
+update :: State -> Message -> Transition Message State
 update Nothing m = case m of
   Today d -> do
     stats <- Stats.init { today: d } # lmap StatsMsg
