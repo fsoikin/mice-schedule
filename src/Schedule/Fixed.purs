@@ -12,26 +12,30 @@ import GenSchedule (Rule, concatRules, timeSlot)
 import Types (Kid(..), Subject(..))
 
 fixedSlots :: Rule
-fixedSlots date kid = concatRules
-  [ for Matvey $ (Spanish # at 9 0 60) `on` [Wednesday]
-  , for Matvey $ (Spanish # at 10 0 60) `on` [Friday]
-
-  , for Matvey $ (Piano # at 12 0 45) `on` [Monday]
-  , for Matvey $ (Piano # at 12 30 45) `on` [Thursday]
-  , for Matvey $ (move Lunch $ at 13 30 30) `on` [Thursday]
-  , for Anya $ (Piano # at 11 30 45) `on` [Thursday]
-
-  , for Matvey $ (Programming # at 13 0 50) `on` [Monday]
-  , for Matvey $ (move Lunch $ at 14 0 30) `on` [Monday]
-  , for Matvey $ (Programming # at 14 0 50) `on` [Wednesday]
-  , for Anya $ (Programming # at 14 0 50) `on` [Monday]
-
-  , (Physics # at 12 0 45) `on` [Tuesday]
-  , (Russian # at 11 0 50) `on` [Wednesday, Friday]
-  , (Biology # at 12 0 50) `on` [Wednesday]
-  , (History # at 12 0 50) `on` [Friday]
-  ]
+fixedSlots date kid = concatRules $ matvey <> anya
   where
+    matvey = for Matvey <$>
+      [ (Spanish # at 10 0 60) `on` [Monday]
+      , (Spanish # at 10 0 60) `on` [Thursday]
+
+      , (Piano # at 11 0 45) `on` [Monday]
+
+      , (Programming # at 13 0 50) `on` [Monday]
+      , (move Lunch $ at 14 0 30) `on` [Monday]
+      , (Programming # at 14 0 50) `on` [Wednesday]
+
+      , (ArchitectureEdx # at 14 30 45) `on` [Monday, Tuesday, Thursday, Friday]
+      , (ArchitectureEdx # at 12 30 45) `on` [Wednesday]
+      , (move Lunch $ at 13 20 30) `on` [Wednesday]
+
+      , (Physics # at 12 0 45) `on` [Tuesday]
+      , (HigherMaths # at 13 30 45) `on` [Thursday]
+      ]
+
+    anya = for Anya <$>
+      [ (Piano # at 10 0 45) `on` [Monday]
+      ]
+
     on f days
       | weekday date `elem` days = f
       | otherwise = identity

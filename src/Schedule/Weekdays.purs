@@ -11,24 +11,21 @@ import GenSchedule (Rule, slot)
 import Types (Kid(..), Subject(..))
 
 weekdays :: Rule
-weekdays date kid = append $ concat
-  [ for Matvey $ Piano `on` [Tuesday, Wednesday, Friday]
-  , for Matvey $ Maths `on` [Monday, Tuesday, Thursday, Friday]
-  , for Matvey $ Chinese `on` [Tuesday, Thursday]
-  , for Matvey $ VoiceTraining `on` [Tuesday, Thursday, Friday]
-  , for Matvey $ Essay `on` [Monday, Wednesday, Friday]
-  , for Matvey $ Spanish `on` [Tuesday, Thursday]
-
-  , for Anya $ Piano `on` [Monday, Tuesday, Wednesday, Friday]
-  , for Anya $ Maths `on` [Monday, Tuesday, Thursday, Friday]
-  , for Anya $ Essay `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
-  , for Anya $ Typing `on` [Tuesday, Thursday]
-  , for Anya $ VoiceTraining `on` [Tuesday, Thursday, Friday]
-  , for Anya $ Writing `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
-
-  , VariousHomework `on` [Monday, Wednesday]
-  ]
+weekdays date kid = append $ concat $ matvey <> anya
   where
+    matvey = for Matvey <$>
+      [ Piano `on` [Tuesday, Wednesday, Thursday, Friday]
+      , Maths `on` [Monday, Tuesday, Thursday, Friday]
+      , VoiceTraining `on` [Tuesday, Thursday, Friday]
+      , Essay `on` [Tuesday, Wednesday, Friday]
+      , Spanish `on` [Wednesday, Friday]
+      , RoomCleaning `on` [Wednesday]
+      ]
+
+    anya = for Anya <$>
+      [ Piano `on` [Tuesday, Wednesday, Thursday, Friday]
+      ]
+
     on subj days
       | weekday date `elem` days = [slot subj]
       | otherwise = []

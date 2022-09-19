@@ -27,20 +27,18 @@ data Teacher = Alisa | Fyodor | Ismini | Luba
 data Subject
   = Lunch
   | Biology
-  | Chinese
   | Essay
-  | History
   | Maths
-  | Outschool
   | Physics
+  | HigherMaths
   | Piano
   | Programming
-  | Russian
+  | ProgrammingEdx
+  | ArchitectureEdx
   | Spanish
-  | Typing
   | VoiceTraining
-  | Writing
   | VariousHomework
+  | RoomCleaning
 derive instance eqSubject :: Eq Subject
 derive instance ordSubject :: Ord Subject
 derive instance gSubject :: Generic Subject _
@@ -65,47 +63,41 @@ subjectName :: Subject -> String
 subjectName = case _ of
   Lunch -> "Lunch"
   Biology -> "Biology"
-  Chinese -> "Chinese"
   Essay -> "Essay"
-  History -> "History"
   Maths -> "Maths"
-  Outschool -> "Outschool"
   Physics -> "Physics"
+  HigherMaths -> "Higher Maths"
   Piano -> "Piano"
   Programming -> "Programming"
-  Russian -> "Russian"
+  ProgrammingEdx -> "EdX programming"
+  ArchitectureEdx -> "EdX architecture"
   Spanish -> "Spanish"
-  Typing -> "Typing"
-  VoiceTraining -> "Voice training"
-  Writing -> "Writing"
   VariousHomework -> "Various Homework"
+  VoiceTraining -> "Voice Training"
+  RoomCleaning -> "Room Cleaning"
 
 subjectColor :: Subject -> { back :: String, fore :: String }
 subjectColor = case _ of
   VariousHomework -> light "rgb(195,201,255)"
   Biology -> light "rgb(204,204,204)"
-  Chinese -> dark "rgb(223,101,176)"
   Essay -> light "rgb(253,204,138)"
-  History -> dark "rgb(150,150,150)"
   Lunch -> light "white"
   Maths -> dark "rgb(0,109,44)"
-  Outschool -> dark "rgb(221,28,119)"
   Physics -> dark "rgb(186,228,188)"
+  HigherMaths -> light "rgb(108,226,226)"
   Piano -> dark "rgb(8,104,172)"
   Programming -> light "rgb(44,162,95)"
-  Russian -> light "rgb(88,162,95)"
+  ProgrammingEdx -> light "rgb(88,162,95)"
+  ArchitectureEdx -> light "rgb(178,226,226)"
   Spanish -> dark "rgb(136,86,167)"
-  Typing -> light "rgb(178,226,226)"
-  VoiceTraining -> light "rgb(123,204,196)"
-  Writing -> light "rgb(215,181,216)"
+  VoiceTraining -> light "rgb(88,162,95)"
+  RoomCleaning -> light "rgb(215,181,216)"
   where
     light = { back: _, fore: "black" }
     dark = { back: _, fore: "white" }
 
 slotLengthMinutes :: Subject -> Int
 slotLengthMinutes = case _ of
-  Typing -> 20
-  Chinese -> 20
   Spanish -> 20
   Piano -> 30
   VoiceTraining -> 20
