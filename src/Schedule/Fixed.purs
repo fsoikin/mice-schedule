@@ -18,7 +18,7 @@ fixedSlots date kid = concatRules $ matvey <> anya
       [ (Spanish # at 10 0 60) `on` [Monday]
       , (Spanish # at 10 0 60) `on` [Thursday]
 
-      , (Piano # at 11 0 45) `on` [Monday]
+      , (Piano # at 11 0 45) `on` [Thursday]
 
       , (Programming # at 13 0 50) `on` [Monday]
       , (move Lunch $ at 14 0 30) `on` [Monday]
@@ -33,7 +33,7 @@ fixedSlots date kid = concatRules $ matvey <> anya
       ]
 
     anya = for Anya <$>
-      [ (Piano # at 10 0 45) `on` [Monday]
+      [ (Piano # at 10 0 45) `on` [Thursday]
       ]
 
     on f days
