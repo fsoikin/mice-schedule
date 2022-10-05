@@ -14,7 +14,7 @@ weekdays :: Rule
 weekdays date kid = append $ concat $ matvey <> anya
   where
     matvey = for Matvey <$>
-      [ Piano `on` [Monday, Tuesday, Wednesday, Friday]
+      [ Piano `on` [Monday, Tuesday, Thursday, Friday]
       , Maths `on` [Monday, Tuesday, Thursday, Friday]
       , VoiceTraining `on` [Tuesday, Thursday, Friday]
       , Essay `on` [Tuesday, Wednesday, Friday]
