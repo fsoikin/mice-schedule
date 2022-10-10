@@ -4,6 +4,16 @@ on:
   push:
     branches: [ master ]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build:
 
@@ -25,6 +35,11 @@ jobs:
     - run: npm i
     - run: npm run build
 
+    - name: Upload GH Pages artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: 'dist/'
+
     - name: Deploy
       run: |
         cd ./dist
@@ -35,8 +50,13 @@ jobs:
         git commit -m "CI Deployment"
         git push --force https://heroku:${{ Secrets.HEROKU_API_KEY }}@git.heroku.com/${{ Secrets.HEROKU_APP_NAME }}.git master
 
-
-    - name: Deploy to GH
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        folder: dist
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
