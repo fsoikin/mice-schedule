@@ -40,16 +40,6 @@ jobs:
       with:
         path: 'dist/'
 
-    - name: Deploy
-      run: |
-        cd ./dist
-        echo "{ \"root\": \".\" }" > static.json
-        git init && git add .
-        git config user.email "fsoikin@fsoikin.dev"
-        git config user.name "CI Deployment"
-        git commit -m "CI Deployment"
-        git push --force https://heroku:${{ Secrets.HEROKU_API_KEY }}@git.heroku.com/${{ Secrets.HEROKU_APP_NAME }}.git master
-
   deploy:
     environment:
       name: github-pages
