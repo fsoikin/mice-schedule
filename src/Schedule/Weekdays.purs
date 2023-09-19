@@ -15,8 +15,13 @@ weekdays date kid = append $ concat $ matvey <> anya
   where
     matvey = for Matvey <$>
       [ PianoPractice `on` [Tuesday, Wednesday, Thursday, Friday]
-      , Maths `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
       , VariousHomework `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
+
+      , Maths `on` [Monday]
+      , Programming `on` [Tuesday]
+      , Maths `on` [Wednesday]
+      , Programming `on` [Thursday]
+      , Calculus `on` [Friday]
       ]
 
     anya = for Anya <$>

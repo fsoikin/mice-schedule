@@ -32,6 +32,7 @@ data Subject
   | VariousHomework
   | College
   | CreativeWriting
+  | Calculus
 derive instance Eq Subject
 derive instance Ord Subject
 derive instance Generic Subject _
@@ -64,6 +65,7 @@ subjectName = case _ of
   VariousHomework -> "Various homework"
   College -> "College"
   CreativeWriting -> "Writing"
+  Calculus -> "Calculus"
 
 subjectColor :: Subject -> { back :: String, fore :: String }
 subjectColor = case _ of
@@ -77,6 +79,7 @@ subjectColor = case _ of
   VariousHomework -> { back: "#D1C4E9", fore: "#000000" }
   College -> { back: "#FFE0B2", fore: "#000000" }
   CreativeWriting -> { back: "#C8E6C9", fore: "#000000" }
+  Calculus -> { back: "#D7CCC8", fore: "#000000" }
 
 slotLengthMinutes :: Subject -> Int
 slotLengthMinutes = case _ of
