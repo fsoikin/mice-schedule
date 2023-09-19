@@ -13,7 +13,7 @@ import Data.Maybe (Maybe(..), fromMaybe)
 import Data.Time.Duration (Days(..))
 import Effect.Class (liftEffect)
 import Effect.Now (nowDate)
-import Elmish (ComponentDef, Dispatch, ReactElement, Transition, bimap, fork, lmap)
+import Elmish (ComponentDef, Dispatch, ReactElement, Transition, bimap, fork, lmap, (<|))
 import Elmish.HTML.Styled as H
 import Elmish.React.DOM as R
 import GenSchedule (isDay)
@@ -45,7 +45,7 @@ view (Just state) dispatch =
   H.div "container pt-5" $
   [ R.fragment $ state.days <#> Day.view
   , Stats.view state.stats (dispatch <<< StatsMsg)
-  , H.button_ "btn btn-primary px-4 mb-5" { onClick: dispatch LoadAnotherWeek } "Ещё неделю!"
+  , H.button_ "btn btn-primary px-4 mb-5" { onClick: dispatch <| LoadAnotherWeek } "Ещё неделю!"
   ]
 
 update :: State -> Message -> Transition Message State

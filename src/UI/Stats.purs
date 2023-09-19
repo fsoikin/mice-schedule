@@ -17,7 +17,7 @@ import Data.Maybe (Maybe(..), fromMaybe)
 import Data.Time.Duration (Days(..))
 import Data.Tuple (Tuple(..))
 import Data.Unfoldable (unfoldr)
-import Elmish (Dispatch, ReactElement, Transition)
+import Elmish (Dispatch, ReactElement, Transition, (<|))
 import Elmish.HTML.Styled as H
 import Elmish.React.DOM as R
 import Schedule (schedule)
@@ -49,7 +49,7 @@ init { today } = pure
 view :: State -> Dispatch Message -> ReactElement
 view { modal: false } dispatch =
   H.div_ "position-fixed d-flex justify-content-end" { style: H.css { top: "2rem", right: "2rem" } } $
-    H.button_ "btn btn-primary" { onClick: dispatch Toggle } "Предметы"
+    H.button_ "btn btn-primary" { onClick: dispatch <| Toggle } "Предметы"
 
 view state dispatch = R.fragment
   [ H.div "modal-backdrop fade show" R.empty
@@ -60,8 +60,8 @@ view state dispatch = R.fragment
           [ H.div "modal-header justify-content-around align-items-center" $
             [ H.h4 "mb-0" $ showDate state.from <> " - " <> showDate state.to
             , H.div "d-flex"
-              [ H.button_ "btn btn-outline-secondary" { onClick: dispatch $ MoveWeek (-1.0) } "<"
-              , H.button_ "btn btn-outline-secondary ml-2" { onClick: dispatch $ MoveWeek 1.0 } ">"
+              [ H.button_ "btn btn-outline-secondary" { onClick: dispatch <| MoveWeek (-1.0) } "<"
+              , H.button_ "btn btn-outline-secondary ml-2" { onClick: dispatch <| MoveWeek 1.0 } ">"
               ]
             ]
 
@@ -80,7 +80,7 @@ view state dispatch = R.fragment
             ]
 
           , H.div "modal-footer" $
-              H.button_ "btn btn-primary px-4" { onClick: dispatch Toggle } "Угу, понятно"
+              H.button_ "btn btn-primary px-4" { onClick: dispatch <| Toggle } "Угу, понятно"
           ]
   ]
   where
