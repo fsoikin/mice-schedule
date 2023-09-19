@@ -4,23 +4,19 @@ module Schedule
 
 import Prelude
 
-import Data.Array (cons)
+
 import Data.Date (Date, Weekday(..))
-import GenSchedule (Rule, TimedRow, genSchedule, isDay, timeSlot, whenDate)
+import GenSchedule (Rule, TimedRow, genSchedule, isDay, whenDate)
 import Schedule.Fixed (fixedSlots)
 import Schedule.Weekdays (weekdays)
-import Types (Kid, Subject(..))
+import Types (Kid)
 
 schedule :: Date -> Kid -> Array TimedRow
 schedule = genSchedule
-  [ lunch
-  , weekdays
+  [ weekdays
   , fixedSlots
   , noWeekends
   ]
-
-lunch :: Rule
-lunch _ _ = cons (Lunch # timeSlot 13 0 30)
 
 noWeekends :: Rule
 noWeekends = whenDate (isDay Saturday || isDay Sunday) \_ _ -> []

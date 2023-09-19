@@ -1,7 +1,6 @@
 module Types
   ( Kid(..)
   , Subject(..)
-  , Teacher(..)
   , allKids
   , allSubjects
   , kidIcon
@@ -19,29 +18,23 @@ import Data.Bounded.Generic (genericBottom, genericTop)
 import Data.Enum.Generic (genericFromEnum, genericToEnum)
 
 data Kid = Matvey | Anya
-derive instance eqKid :: Eq Kid
-derive instance ordKid :: Ord Kid
-
-data Teacher = Alisa | Fyodor | Ismini | Luba
+derive instance Eq Kid
+derive instance Ord Kid
 
 data Subject
-  = Lunch
-  | Biology
-  | Essay
-  | Maths
+  = Maths
   | Physics
-  | HigherMaths
-  | Piano
   | Programming
-  | ProgrammingEdx
-  | ArchitectureEdx
+  | Piano
+  | PianoPractice
   | Spanish
-  | VoiceTraining
+  | French
   | VariousHomework
-  | RoomCleaning
-derive instance eqSubject :: Eq Subject
-derive instance ordSubject :: Ord Subject
-derive instance gSubject :: Generic Subject _
+  | College
+  | CreativeWriting
+derive instance Eq Subject
+derive instance Ord Subject
+derive instance Generic Subject _
 
 allKids :: Array Kid
 allKids = [Matvey, Anya]
@@ -61,45 +54,33 @@ kidIcon = case _ of
 
 subjectName :: Subject -> String
 subjectName = case _ of
-  Lunch -> "Lunch"
-  Biology -> "Biology"
-  Essay -> "Essay"
-  Maths -> "Maths"
+  Maths -> "Mathematics"
   Physics -> "Physics"
-  HigherMaths -> "Higher Maths"
-  Piano -> "Piano"
   Programming -> "Programming"
-  ProgrammingEdx -> "EdX programming"
-  ArchitectureEdx -> "EdX architecture"
+  Piano -> "Piano"
+  PianoPractice -> "Piano practice"
   Spanish -> "Spanish"
-  VariousHomework -> "Various Homework"
-  VoiceTraining -> "Voice Training"
-  RoomCleaning -> "Room Cleaning"
+  French -> "French"
+  VariousHomework -> "Various homework"
+  College -> "College"
+  CreativeWriting -> "Writing"
 
 subjectColor :: Subject -> { back :: String, fore :: String }
 subjectColor = case _ of
-  VariousHomework -> light "rgb(195,201,255)"
-  Biology -> light "rgb(204,204,204)"
-  Essay -> light "rgb(253,204,138)"
-  Lunch -> light "white"
-  Maths -> dark "rgb(0,109,44)"
-  Physics -> dark "rgb(186,228,188)"
-  HigherMaths -> light "rgb(108,226,226)"
-  Piano -> dark "rgb(8,104,172)"
-  Programming -> light "rgb(44,162,95)"
-  ProgrammingEdx -> light "rgb(88,162,95)"
-  ArchitectureEdx -> light "rgb(178,226,226)"
-  Spanish -> dark "rgb(136,86,167)"
-  VoiceTraining -> light "rgb(88,162,95)"
-  RoomCleaning -> light "rgb(215,181,216)"
-  where
-    light = { back: _, fore: "black" }
-    dark = { back: _, fore: "white" }
+  Maths -> { back: "#F4EDEA", fore: "#000000" }
+  Physics -> { back: "#AEDFF7", fore: "#000000" }
+  Programming -> { back: "#F4DADA", fore: "#000000" }
+  Piano -> { back: "#B2DFDB", fore: "#000000" }
+  PianoPractice -> { back: "#FFCDD2", fore: "#000000" }
+  Spanish -> { back: "#FFECB3", fore: "#000000" }
+  French -> { back: "#B3E5FC", fore: "#000000" }
+  VariousHomework -> { back: "#D1C4E9", fore: "#000000" }
+  College -> { back: "#FFE0B2", fore: "#000000" }
+  CreativeWriting -> { back: "#C8E6C9", fore: "#000000" }
 
 slotLengthMinutes :: Subject -> Int
 slotLengthMinutes = case _ of
-  Spanish -> 20
-  Piano -> 30
-  VoiceTraining -> 20
-  Essay -> 30
+  Spanish -> 60
+  Piano -> 45
+  CreativeWriting -> 30
   _ -> 40

@@ -8,7 +8,7 @@ module UI.Stats
 
 import Prelude
 
-import Control.Alternative (guard)
+
 import Data.Array (foldl)
 import Data.Date (Date, Weekday(..), adjust, weekday)
 import Data.Enum (pred, succ)
@@ -21,7 +21,7 @@ import Elmish (Dispatch, ReactElement, Transition, (<|))
 import Elmish.HTML.Styled as H
 import Elmish.React.DOM as R
 import Schedule (schedule)
-import Types (Kid, Subject(..), allKids, allSubjects, kidIcon, subjectName)
+import Types (Kid, Subject, allKids, allSubjects, kidIcon, subjectName)
 import UI.Utils (showDate, subjectStyle)
 
 data Message
@@ -89,7 +89,6 @@ view state dispatch = R.fragment
     counts :: Array { subject :: Subject, counts :: M.Map Kid Int }
     counts = do
       subject <- allSubjects
-      guard $ subject /= Lunch
       pure
         { subject
         , counts: countsPerKid <#> \m -> M.lookup subject m # fromMaybe 0
