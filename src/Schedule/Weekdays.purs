@@ -17,6 +17,11 @@ weekdays date kid = append $ concat $ matvey <> anya
       [ PianoPractice `on` [Tuesday, Wednesday, Thursday, Friday]
       , VariousHomework `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
 
+      , Duolingo `on` [Monday]
+      , Saxophone `on` [Wednesday]
+      , Trumpet `on` [Thursday]
+      , Voice `on` [Friday]
+
       , Maths `on` [Monday]
       , Programming `on` [Tuesday]
       , Maths `on` [Wednesday]
@@ -27,7 +32,7 @@ weekdays date kid = append $ concat $ matvey <> anya
     anya = for Anya <$>
       [ PianoPractice `on` [Tuesday, Wednesday, Thursday, Friday]
       , Maths `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
-      , French `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
+      , Duolingo `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
       , CreativeWriting `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
       , VariousHomework `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
       ]
