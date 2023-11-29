@@ -32,9 +32,12 @@ weekdays date kid = append $ concat $ matvey <> anya
     anya = for Anya <$>
       [ PianoPractice `on` [Tuesday, Wednesday, Thursday, Friday]
       , Maths `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
+      , PianoPractice `on` [Tuesday, Wednesday, Thursday, Friday]
       , Duolingo `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
+      , Maths `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
       , CreativeWriting `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
-      , VariousHomework `on` [Monday, Tuesday, Wednesday, Thursday, Friday]
+      , VariousHomework `on` [Monday, Wednesday]
+      , CollegeHomework `on` [Tuesday, Thursday, Friday]
       ]
 
     on subj days

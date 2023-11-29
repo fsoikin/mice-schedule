@@ -15,16 +15,17 @@ fixedSlots :: Rule
 fixedSlots date kid = concatRules $ matvey <> anya
   where
     matvey = for Matvey <$>
-      [ (College # at 8 0 90) `on` [Tuesday, Thursday]
+      [ (College # at 8 0 100) `on` [Tuesday, Thursday]
       , (Spanish # at 10 0 60) `on` [Wednesday, Friday]
       , (Piano # at 9 30 45) `on` [Monday]
       , (Philosophy # at 17 0 60) `on` [Tuesday]
       ]
 
     anya = for Anya <$>
-      [ (College # at 8 0 90) `on` [Monday, Wednesday]
+      [ (College # at 8 0 100) `on` [Monday, Wednesday]
       , (Piano # at 10 30 45) `on` [Monday]
-      , (Physics # at 11 0 45) `on` [Tuesday]
+      , (Therapy # at 11 0 90) `on` [Tuesday]
+      , (Physics # at 13 0 45) `on` [Tuesday]
       , (Programming # at 11 0 45) `on` [Thursday, Friday]
       , (Philosophy # at 17 0 60) `on` [Tuesday]
       ]

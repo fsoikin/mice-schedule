@@ -30,12 +30,14 @@ data Subject
   | Spanish
   | Duolingo
   | VariousHomework
+  | CollegeHomework
   | College
   | CreativeWriting
   | Calculus
   | Philosophy
   | Saxophone
   | Trumpet
+  | Therapy
   | Voice
 derive instance Eq Subject
 derive instance Ord Subject
@@ -67,12 +69,14 @@ subjectName = case _ of
   Spanish -> "Spanish"
   Duolingo -> "Duolingo"
   VariousHomework -> "Various homework"
+  CollegeHomework -> "College homework"
   College -> "College"
   CreativeWriting -> "Writing"
   Calculus -> "Calculus"
   Philosophy -> "Philosophy"
   Saxophone -> "Saxophone"
   Trumpet -> "Trumpet"
+  Therapy -> "Therapy"
   Voice -> "Vocal training"
 
 subjectColor :: Subject -> { back :: String, fore :: String }
@@ -85,19 +89,23 @@ subjectColor = case _ of
   Spanish -> { back: "#FFECB3", fore: "#000000" }
   Duolingo -> { back: "#B3E5FC", fore: "#000000" }
   VariousHomework -> { back: "#D1C4E9", fore: "#000000" }
+  CollegeHomework -> { back: "#F1C4E9", fore: "#000000" }
   College -> { back: "#FFE0B2", fore: "#000000" }
   CreativeWriting -> { back: "#C8E6C9", fore: "#000000" }
   Calculus -> { back: "#D7CCC8", fore: "#000000" }
   Philosophy -> { back: "#FFEBEE", fore: "#000000" }
   Saxophone -> { back: "#E0F2F1", fore: "#000000" }
   Trumpet -> { back: "#F3E5F5", fore: "#000000" }
+  Therapy -> { back: "#F3E5F5", fore: "#000000" }
   Voice -> { back: "#FFF3E0", fore: "#000000" }
 
 slotLengthMinutes :: Subject -> Int
 slotLengthMinutes = case _ of
   Spanish -> 60
   Piano -> 45
+  PianoPractice -> 10
   CreativeWriting -> 30
+  Maths -> 20
   Duolingo -> 20
   Saxophone -> 20
   Trumpet -> 20
